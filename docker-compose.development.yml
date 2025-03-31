@@ -8,9 +8,11 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
     env_file:
-      - .env      
+      - .env  
     environment:
-      - NODE_ENV=production
-    command: npm run start
-    restart: always
+      - CHOKIDAR_USEPOLLING=true
+    command: npm run dev
